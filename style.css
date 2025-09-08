@@ -99,6 +99,19 @@ p {
   right: 20px;
 }
 
+.stickers-below {
+  margin-top: 30px;       
+  display: flex;
+  justify-content: center;
+  gap: 700px;              
+  position: relative;     
+  z-index: 1;
+}
+
+.stickers-below .sticker {
+  position: relative;     
+  animation: float 3s ease-in-out infinite;
+}
 
 
 
@@ -158,3 +171,62 @@ p {
 /* colores por personaje */
 .maka::before  { background: radial-gradient(circle, rgba(255,0,0,.55), transparent 70%); }
 .kyoko::before { background: radial-gradient(circle, rgba(255,70,70,.55), transparent 70%); }
+
+.kyubey {
+  position: relative;
+  display: inline-block;
+}
+
+/* la imagen queda centrada dentro del contenedor */
+.kyubey img {
+  display: block;
+  margin: 0 auto;
+  width: 250px;
+  height: auto;
+  position: relative;   /* permite mover la imagen */
+  top: 50px;            /* mueve hacia abajo (negativo la sube) */
+  left: -100px;           /* mueve hacia la derecha (negativo la lleva a la izq) */
+}
+
+/* sombra alineada al centro exacto de la imagen */
+.kyubey::before {
+  content: "";
+  position: absolute;
+  top: 55%;
+  left: 30%;
+  width: 350px;   /* un poco más pequeño que la img */
+  height: 350px;
+  transform: translate(-50%, -50%); /* centra respecto al cuerpo */
+  border-radius: 50%;
+  background: radial-gradient(circle,
+              rgba(255,255,255,0.7) 0%,
+              rgba(255,0,0,0.35) 45%,
+              transparent 70%);
+  filter: blur(2px);
+  z-index: -1;
+}
+
+
+.navbar {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 20px;
+  z-index: 2;
+  position: relative;
+}
+
+.navbar a {
+  background: rgba(255, 0, 0, 0.3);
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 15px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.navbar a:hover {
+  background: rgba(255, 0, 0, 0.6);
+  transform: scale(1.1);
+}
