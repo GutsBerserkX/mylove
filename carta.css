@@ -1,0 +1,33 @@
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  background: radial-gradient(circle at center, #660000 0%, #0d0000 100%);
+  font-family: 'Story Script', cursive;
+  color: #ffe6e6;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.carta-container {
+  max-width: 700px;
+  padding: 20px;
+  border-radius: 15px;
+  background: rgba(0, 0, 0, 0.4);
+  box-shadow: 0 0 15px rgba(255, 0, 0, 0.6);
+}
+
+h1 {
+  margin-bottom: 20px;
+  font-size: 2.5em;
+  color: #ffb3b3;
+}
+
+#carta-texto {
+  font-size: 1.3em;
+  line-height: 1.6;
+  white-space: pre-line; /* respeta saltos de línea */
+  text-align: justify;
+}
