@@ -28,6 +28,6 @@ h1 {
 #carta-texto {
   font-size: 1.3em;
   line-height: 1.6;
-  white-space: pre-line; /* respeta saltos de línea */
+  white-space: pre-line;
   text-align: justify;
 }
