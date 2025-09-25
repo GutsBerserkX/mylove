@@ -1,11 +1,170 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <title>ily</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      background: radial-gradient(circle at center, #660000 0%, #0d0000 100%);
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: #fff;
+    }
+
+    h1 {
+      margin: 0 0 30px 0;
+      font-size: 3em;
+      font-family: 'Story Script', cursive;
+      color: #fff;
+      animation: pulseGlow 2s infinite;
+    }
+
+    @keyframes pulseGlow {
+      0%, 100% {
+        text-shadow: 0 0 5px #ff0000, 0 0 10px #ff4d4d, 0 0 20px #ff8080;
+      }
+      50% {
+        text-shadow: 0 0 20px #ff3333, 0 0 30px #ff6666, 0 0 40px #ff9999;
+      }
+    }
+
+    #gameArea {
+      position: relative;
+      width: 600px;
+      height: 400px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 15px;
+      box-shadow: 0 0 15px rgba(255, 0, 0, 0.5);
+      backdrop-filter: blur(10px);
+      overflow: hidden;
+    }
+
+    #player {
+      position: absolute;
+      width: 40px;
+      height: 40px;
+      background: #ff3333;
+      border-radius: 50%;
+      text-align: center;
+      line-height: 40px;
+      font-size: 20px;
+      color: white;
+      font-weight: bold;
+      top: 20px;
+      left: 20px;
+      transition: top 0.1s, left 0.1s;
+      box-shadow: 0 0 10px rgba(255, 0, 0, 0.8);
+    }
+
+    #goal {
+      position: absolute;
+      width: 50px;
+      height: 50px;
+      background: gold;
+      border-radius: 50%;
+      bottom: 20px;
+      right: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 24px;
+      box-shadow: 0 0 15px rgba(255, 215, 0, 0.9);
+    }
+
+    #message {
+      display: none; /* oculto al inicio */
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.7);
+      color: white;
+      font-size: 2em;
+      font-weight: bold;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      border-radius: 15px;
+      animation: fadeIn 2s forwards;
+    }
+
+    @keyframes fadeIn {
+      from {opacity: 0;}
+      to {opacity: 1;}
+    }
+  </style>
 </head>
+<a href="index.html" class="back-btn">⬅️</a>
+
+<style>
+  .back-btn {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    background: #ff3333;
+    color: #fff;
+    text-decoration: none;
+    font-size: 24px;
+    padding: 8px 14px;
+    border-radius: 50%;
+    box-shadow: 0 0 15px rgba(255, 0, 0, 0.7);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    z-index: 9999;
+  }
+
+  .back-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 25px rgba(255, 0, 0, 1);
+  }
+</style>
+
+
+
 <body>
-    
+  <h1>Lleva la P a la M:3</h1>
+  <div id="gameArea">
+    <div id="player">P</div>
+    <div id="goal">M</div>
+    <div id="message">TE AMOOOOOOOOOOOOOOOOOOO<br> no lo había dicho en ninguna parte, pero d vd quiero que lo tengas presente siempre ;3 </div>
+  </div>
+
+  <script>
+    const player = document.getElementById("player");
+    const goal = document.getElementById("goal");
+    const message = document.getElementById("message");
+    const area = document.getElementById("gameArea");
+    let posX = 20, posY = 20;
+    const speed = 20;
+    let gameOver = false;
+
+    document.addEventListener("keydown", (e) => {
+      if (gameOver) return;
+
+      if (e.key === "ArrowUp" && posY > 0) posY -= speed;
+      if (e.key === "ArrowDown" && posY < area.clientHeight - player.clientHeight) posY += speed;
+      if (e.key === "ArrowLeft" && posX > 0) posX -= speed;
+      if (e.key === "ArrowRight" && posX < area.clientWidth - player.clientWidth) posX += speed;
+
+      player.style.top = posY + "px";
+      player.style.left = posX + "px";
+
+      
+      const playerRect = player.getBoundingClientRect();
+      const goalRect = goal.getBoundingClientRect();
+      if (
+        playerRect.left < goalRect.right &&
+        playerRect.right > goalRect.left &&
+        playerRect.top < goalRect.bottom &&
+        playerRect.bottom > goalRect.top
+      ) {
+        message.style.display = "flex";
+        gameOver = true;
+      }
+    });
+  </script>
 </body>
 </html>

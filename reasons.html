@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>22</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      background: radial-gradient(circle at center, #660000 0%, #0d0000 100%);
+      font-family: Arial, sans-serif;
+      text-align: center;
+      overflow: hidden;
+      position: relative;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;    
+    }
+
+    h1 {
+      margin: 0 0 40px 0; 
+      font-size: 3em;
+      font-family: 'Story Script', cursive;
+      color: #000;
+      animation: pulseGlow 2s infinite;
+      position: relative;
+      z-index: 1;
+    }
+
+    @keyframes pulseGlow {
+      0%, 100% {
+        text-shadow: 0 0 5px #ff0000, 0 0 10px #ff4d4d, 0 0 20px #ff8080;
+      }
+      50% {
+        text-shadow: 0 0 20px #ff3333, 0 0 30px #ff6666, 0 0 40px #ff9999;
+      }
+    }
+
+    .container {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 15px;
+      padding: 30px;
+      max-width: 600px;
+      width: 90%;
+      box-shadow: 0 0 15px rgba(255, 0, 0, 0.5);
+      backdrop-filter: blur(10px);
+      color: #fff;
+      font-size: 1.2em;
+      position: relative;
+      z-index: 1;
+      min-height: 150px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .reason {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 0.8s forwards;
+    }
+
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .btn {
+      margin-top: 20px;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 10px;
+      background: #ff3333;
+      color: #fff;
+      font-size: 1em;
+      cursor: pointer;
+      box-shadow: 0 0 10px rgba(255, 0, 0, 0.7);
+      transition: background 0.3s, transform 0.2s;
+    }
+
+    .btn:hover {
+      background: #ff6666;
+      transform: scale(1.05);
+    }
+
+    .back-btn {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      background: #ff3333;
+      color: #fff;
+      text-decoration: none;
+      font-size: 24px;
+      padding: 8px 14px;
+      border-radius: 50%;
+      box-shadow: 0 0 15px rgba(255, 0, 0, 0.7);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      z-index: 9999;
+    }
+
+    .back-btn:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 25px rgba(255, 0, 0, 1);
+    }
+  </style>
+</head>
+<body>
+  <a href="index.html" class="back-btn">⬅️</a>
+
+  <h1>22 reasons;3</h1>
+  <div class="container">
+    <div id="reasons" class="reason"></div>
+  </div>
+  <button class="btn" id="nextBtn">Ver siguiente</button>
+
+  <script>
+    const reasons = [
+      { title: "1. por ser tú misma", why: "amo que seas tú misma, desde el momento 1 en que te conocí no dejaste de ser tú y m enamoré d tu persona<3" },
+      { title: "2. por tu intensidad", why: "amo sentirme amado intensamente por ti, y amo poder corresponderte y poder hacerte sentir bien" },
+      { title: "3. por tus emociones", why: "amo que seas una persona emocional, amo que puedas expresarte y que puedas ser sensible cnmigo :c" },
+      { title: "4. por aceptarme cm soy", why: "pk sé que a veces es dificil lidiar cn el tipo d persona que soy, pero d vd gracias por tenerme paciencia :,v" },
+      { title: "5. por poder pasar mxo tiempo juntos", why: "cdo ambos estamos disponibles somos demasiado unidos;3, sé k cdo rompamos la distancia pareceremos 2 chicles jj" },
+      { title: "6. por inspirarme", why: "realmente tú m das demasiadas razones d ser creativo, este es un ejemplo d ello :3" },
+      { title: "7. por lo cariñosa", why: "cdo llegas a ser demasiado cariñosa me dejas como AAAAAAA, en vd amo que me mimes y m trates cm a tu bebé" },
+      { title: "8. por lo leal", why: "aunq aún tenga problemas d confianza cn eso, confio 100% k no m defraudarías d esa forma u-u" },
+      { title: "9. por tu interés", why: "cdo t interesas por mis gustos o las cosas que t hablo pones tanta atención, mg mxo eso:3" },
+      { title: "10. por ser genuina", why: "pq sé que nada d ti vendría d un lado falso, eres demasiado honesta con lo que sientes y cm lo expresas :3" },
+      { title: "11. por tu atención", why: "pk sé k soy el centro d tu atención y m lo haces saber, amo que seas tan atenta cnmigo y t preocupes siempre por mi u-u" },
+      { title: "12. por la confianza que m das", why: "cntigo siento que puedo ser vulnerable, que puedo abrirme abiertamente sin sentir nada de miedo" },
+      { title: "13. por los detallitos", why: "cada cosa que m haces d vd QUE ME GUSTA MUCHO ME HACE SENTIR AMADO NO DEJES DE HACERLO POR FAVOR" },
+      { title: "14. por motivarme", why: "gracias a ti quiero ser una mejor persona, una mejor pareja y ser estable para poder transmitirte eso a ti tb;3" },
+      { title: "15. por ser mi cómplice", why: "amo que tengamos bromas, secretos y solo cosas que sabemos los 2, la confianza que hay en los 2 es mxa y m hace sentir dms conectado cntigo :'v" },
+      { title: "16. por tu compañía", why: "porque sé que podré acudir ctigo cdo esté mal, cdo esté bn y pq sabes q eres mi calma y tranquilidad :3" },
+      { title: "17. por tus risas y chistes estúpidos", why: "son tan malos que m hacen reir amor PERO D VD que te amo mucho, algún dia mejoraras tu humor d viejita de 70 años,,,," },
+      { title: "18. por tu valentía", why: "ver como enfrentas las cosas realmente m hace ver lo fuerte que eres, TE ADMIRO muchísimo, el simple hecho que vayas contra tu mente diario es símbolo d todo lo que eres" },
+      { title: "19. por tus ideas", why: "tus ideas acerca d la moral, siempre t he dicho que m llamo la atención el tipo d persona que eres y lo recta que eres cn tu postura:3" },
+      { title: "20. por soñar conmigo", why: "que hagas planes a futuro conmigo y que sea yo la persona con la k quieres todo m llena d ilusión y ganas d construir todo ctigo" },
+      { title: "21. por gastón", why: "NO POR PENULTIMO pero no menos importante, por nuestro bebé:333" },
+      { title: "22. por ser mi hogar", why: "a pesar d buenos o malos momentos, contigo es donde pertenezco, pía, siempre serás mi hogar y donde voy a encontrar comfort<3" }
+    ];
+
+    let index = 0;
+    const reasonsDiv = document.getElementById("reasons");
+    const nextBtn = document.getElementById("nextBtn");
+
+    function showReason(i) {
+      reasonsDiv.innerHTML = `
+        <div class="reason">
+          <strong>${reasons[i].title}</strong><br><br>
+          ${reasons[i].why}
+        </div>
+      `;
+    }
+
+    function nextReason() {
+      if (index < reasons.length) {
+        showReason(index);
+        index++;
+      } else {
+        reasonsDiv.innerHTML = `<div class="reason">todas esas son las razones por las que m gustas, el 22 es x tu numero d cumple:3</div>`;
+        nextBtn.disabled = true; // opcional: desactivar botón al final
+      }
+    }
+
+    // mostrar la primera razón al cargar
+    window.onload = () => {
+      showReason(index);
+      index++;
+      nextBtn.addEventListener("click", nextReason);
+    };
+  </script>
+</body>
+</html>
