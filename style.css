@@ -11,7 +11,7 @@ body {
   position: relative;
 }
 
-/* partículas flotando */
+
 body::before, body::after {
   content: "";
   position: absolute;
@@ -131,7 +131,7 @@ p {
 .sticker {
   position: absolute;
   display: inline-block;
-  z-index: 2;                 /* sobre partículas */
+  z-index: 2;                 
   animation: float 3s ease-in-out infinite;
 }
 
@@ -144,7 +144,7 @@ p {
   filter: drop-shadow(0 4px 10px rgba(0,0,0,.5));
 }
 
-/* círculo detrás del sticker */
+
 .sticker::before {
   content: "";
   position: absolute;
@@ -162,7 +162,7 @@ p {
 .sticker-left  { top: 20px; left: 20px; }
 .sticker-right { top: 20px; right: 20px; }
 
-/* animación flotante */
+
 @keyframes float {
   0%,100% { transform: translateY(0); }
   50%     { transform: translateY(-10px); }
@@ -177,26 +177,26 @@ p {
   display: inline-block;
 }
 
-/* la imagen queda centrada dentro del contenedor */
+
 .kyubey img {
   display: block;
   margin: 0 auto;
   width: 250px;
   height: auto;
-  position: relative;   /* permite mover la imagen */
-  top: 50px;            /* mueve hacia abajo (negativo la sube) */
-  left: -100px;           /* mueve hacia la derecha (negativo la lleva a la izq) */
+  position: relative;   
+  top: 50px;           
+  left: -100px;
 }
 
-/* sombra alineada al centro exacto de la imagen */
+
 .kyubey::before {
   content: "";
   position: absolute;
   top: 55%;
   left: 30%;
-  width: 350px;   /* un poco más pequeño que la img */
+  width: 350px;   
   height: 350px;
-  transform: translate(-50%, -50%); /* centra respecto al cuerpo */
+  transform: translate(-50%, -50%); 
   border-radius: 50%;
   background: radial-gradient(circle,
               rgba(255,255,255,0.7) 0%,
